@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.tool'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+
+application {
+    mainClass = group + '.Main'
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName.set("mergeScriptTools")
+    archiveVersion.set("") // Bỏ version để tên file ngắn gọn
+    manifest {
+        attributes(
+                'Main-Class': application.mainClass
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.register('copyJarToRoot', Copy) {
+    dependsOn build
+    from("$buildDir/libs")
+    include("*.jar")
+    into("$rootDir")
+}
+
+build.finalizedBy(copyJarToRoot)
