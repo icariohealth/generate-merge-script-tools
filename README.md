@@ -28,6 +28,4 @@ unitKeys=id, client_id
 ```bash
 java -jar mergeScriptTools.jar <properties file name>
 ```
-- The generated SQL file will be placed in outpot folder
-### Example
-<img width="1124" height="319" alt="image" src="https://github.com/user-attachments/assets/194ed42d-fcae-41d3-9c29-ca7803ee91e8" />
+- The generated SQL file will be placed in output folder
