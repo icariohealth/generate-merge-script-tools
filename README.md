@@ -1,7 +1,9 @@
 ## Setup
 - Install Java 17+
-- Edit the properties file to customize the generated SQL.
-## Configuration
+- Clone a new one from app.properties file or using it as properties file
+- Edit the properties file to customize the generated SQL as below
+### Edit properties file (app.properties)
+#### Overview
 | Main Key           | Description                                          |
 |---------------|------------------------------------------------------|
 | fileName      | Output SQL file name (without .sql extension)        |
@@ -9,7 +11,7 @@
 | tableName     | Target table name                                    |
 | columns       | Comma-separated list of table columns                |
 | unitKeys      | Comma-separated list of columns used in ON clause    |  
-### Example
+#### Example
 ```config
 # File name
 fileName=process_outreach_action_event_changes
@@ -24,8 +26,13 @@ unitKeys=id, client_id
 ```
 ## Run
 - Navigate to the folder containing the **mergeScriptTools.jar** file and open a terminal there
-- Run the below command
+- Run the below command (recommend running with Git Bash if you are using Windows OS)
 ```bash
 java -jar mergeScriptTools.jar <properties file name>
 ```
 - The generated SQL file will be placed in output folder
+#### Example
+```bash
+java -jar mergeScriptTools.jar app.properties
+```
+
