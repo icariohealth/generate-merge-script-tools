@@ -1,5 +1,5 @@
 ## Setup
-- Install Java 17+
+- Install Java 21
 - Clone a new one from app.properties file or using it as properties file
 - Edit the properties file to customize the generated SQL as below
 ### Edit properties file (app.properties)
